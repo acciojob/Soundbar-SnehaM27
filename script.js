@@ -31,4 +31,6 @@ const stopBtn = document.createElement("button");
 stopBtn.className = "stop";
 stopBtn.textContent = "stop";
 
-stopB
+stopBtn.addEventListener("click", stopAll);
+
+container.appendChild(stopBtn);
