@@ -11,22 +11,28 @@ function stopAll() {
     }
 }
 
-// Create sound buttons
 sounds.forEach(sound => {
+    // create button
     const btn = document.createElement("button");
     btn.className = "btn";
     btn.textContent = sound;
 
+    // create audio tag so Cypress can detect it
+    const audio = document.createElement("audio");
+    audio.src = `./sounds/${sound}.mp3`;
+    audio.id = sound; // optional but helps debugging
+    document.body.appendChild(audio);
+
     btn.addEventListener("click", () => {
         stopAll();
-        currentAudio = new Audio(`./sounds/${sound}.mp3`);
-        currentAudio.play();
+        currentAudio = audio;
+        audio.play();
     });
 
     container.appendChild(btn);
 });
 
-// Create stop button
+// STOP button
 const stopBtn = document.createElement("button");
 stopBtn.className = "stop";
 stopBtn.textContent = "stop";
